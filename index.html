@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      %SITE_URL% comes from SITE_URL in vite.config.js (your domain, no "/" at the end).
+      Link previews on WhatsApp / Facebook / LinkedIn need the full address of og-image.png.
+    -->
+    <title>Hamza Hashma | Web & Mobile App Developer · مطوّر مواقع وتطبيقات</title>
+    <meta name="description" content="Hamza Hashma — web & mobile app developer. Websites, online stores, Android & iPhone apps and custom management systems, in Arabic and English. حمزة هشمة — مطوّر مواقع وتطبيقات ومتاجر إلكترونية وأنظمة إدارة." />
+    <meta name="author" content="Hamza Hashma" />
+    <meta name="theme-color" content="#070b14" />
+    <link rel="canonical" href="%SITE_URL%/" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Link preview (WhatsApp, Facebook, LinkedIn, Telegram) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hamza Hashma" />
+    <meta property="og:title" content="Hamza Hashma — Web & Mobile App Developer" />
+    <meta property="og:description" content="Websites, online stores, mobile apps and management systems, in Arabic and English. مواقع، متاجر إلكترونية، تطبيقات موبايل وأنظمة إدارة." />
+    <meta property="og:url" content="%SITE_URL%/" />
+    <meta property="og:image" content="%SITE_URL%/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Hamza Hashma — Web & App Developer" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ar_AR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hamza Hashma — Web & Mobile App Developer" />
+    <meta name="twitter:description" content="Websites, online stores, mobile apps and management systems, in Arabic and English." />
+    <meta name="twitter:image" content="%SITE_URL%/og-image.png" />
+
+    <!-- Structured data for Google -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Hamza Hashma — Web & Mobile App Development",
+        "alternateName": "حمزة هشمة — تطوير مواقع وتطبيقات",
+        "image": "%SITE_URL%/og-image.png",
+        "logo": "%SITE_URL%/icon-512.png",
+        "url": "%SITE_URL%/",
+        "email": "hamzaheshmeh9@gmail.com",
+        "telephone": "+96171803869",
+        "areaServed": { "@type": "Country", "name": "Syria" },
+        "availableLanguage": ["Arabic", "English"],
+        "founder": {
+          "@type": "Person",
+          "name": "Hamza Hashma",
+          "jobTitle": "Web & Mobile App Developer",
+          "sameAs": ["https://www.linkedin.com/in/hamza-hashma"]
+        },
+        "knowsAbout": ["Web development", "Mobile app development", "Flutter", "React", "Node.js", "E-commerce", "Management systems"]
+      }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    />
+
+    <!-- Apply the saved theme before the page paints (no white/dark flash) -->
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+        var l = localStorage.getItem("lang");
+        if (l === "ar") { document.documentElement.lang = "ar"; document.documentElement.dir = "rtl"; }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding:2rem;font-family:sans-serif">Hamza Hashma — Web &amp; Mobile App Developer. WhatsApp: +961 71 803 869 · hamzaheshmeh9@gmail.com</p>
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
