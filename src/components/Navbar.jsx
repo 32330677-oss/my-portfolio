@@ -2,7 +2,7 @@ import { useState } from "react";
 import Icon from "./Icon";
 import Logo from "./Logo";
 
-export default function Navbar({ t, name, onToggleLang, theme, onToggleTheme }) {
+export default function Navbar({ t, name, onToggleLang, theme, onToggleTheme, activeId, whatsapp }) {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 
@@ -26,11 +26,17 @@ export default function Navbar({ t, name, onToggleLang, theme, onToggleTheme }) 
 
         <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label="Main">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="nav-link" onClick={close}>
+            <a
+              key={l.href}
+              href={l.href}
+              className={`nav-link ${activeId === l.href.slice(1) ? "is-active" : ""}`}
+              aria-current={activeId === l.href.slice(1) ? "location" : undefined}
+              onClick={close}
+            >
               {l.label}
             </a>
           ))}
-          <a href="#contact" className="btn btn-primary btn-sm nav-cta" onClick={close}>
+          <a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm nav-cta" onClick={close}>
             {t.cta}
           </a>
         </nav>

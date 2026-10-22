@@ -1,4 +1,4 @@
-import { Laptop, Phone } from "./Devices";
+import LiveDemo from "./LiveDemo";
 
 export default function Hero({ t, contact, lang, heroShots }) {
   return (
@@ -29,15 +29,8 @@ export default function Hero({ t, contact, lang, heroShots }) {
           </div>
         </div>
 
-        {/* The one animated moment on the page: the devices arrive on load. */}
-        <div className="hero-stage" aria-hidden="true">
-          <div className="stage-laptop">
-            <Laptop src={heroShots.laptop} mock="payroll" lang={lang} />
-          </div>
-          <div className="stage-phone">
-            <Phone src={heroShots.phone} mock="attendance" lang={lang} />
-          </div>
-        </div>
+        {/* The one animated moment on load; after that it only moves when you use it. */}
+        <LiveDemo key={lang} lang={lang} hint={t.demoHint} resetLabel={t.demoReset} heroShots={heroShots} />
       </div>
     </section>
   );

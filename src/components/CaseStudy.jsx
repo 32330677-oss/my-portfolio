@@ -8,7 +8,7 @@ export default function CaseStudy({ project, lang, label, flip }) {
 
   return (
     <article className={`case ${flip ? "case-flip" : ""}`}>
-      <div className="case-visual">
+      <div className="case-visual" style={{ viewTransitionName: `visual-${project.slug}` }}>
         {cover ? (
           <DeviceFrame src={cover.src} alt={cover.caption?.[lang] || p.title} frame={cover.frame} />
         ) : (

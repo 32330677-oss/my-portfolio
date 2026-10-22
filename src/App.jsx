@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
@@ -45,11 +46,18 @@ const projectSlugFrom = (hash) => {
   return m ? m[1] : null;
 };
 
+const prefersReducedMotion = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+// Sections the menu links to; the one on screen is highlighted in the menu.
+const NAV_SECTIONS = ["services", "projects", "packages", "experience", "faq", "contact"];
+
 // ---- app -----------------------------------------------------------------
 export default function App() {
   const [lang, setLang] = useState(getInitialLang);
   const [theme, setTheme] = useState(getInitialTheme);
   const [hash, setHash] = useState(readHash);
+  const [activeId, setActiveId] = useState("");
+  const hashRef = useRef(hash);
   const t = portfolioData[lang];
 
   const slug = projectSlugFrom(hash);
@@ -80,12 +88,44 @@ export default function App() {
     storage.set("theme", theme);
   }, [theme]);
 
-  // Follow the URL hash.
+  // Follow the URL hash. Moving between the home page and a project page
+  // uses a view transition (the project's picture grows into its page).
   useEffect(() => {
-    const onHash = () => setHash(readHash());
+    const onHash = () => {
+      const h = readHash();
+      const from = hashRef.current;
+      hashRef.current = h;
+      const pageChange = h !== from && (h.startsWith("#/") || from.startsWith("#/"));
+      if (pageChange && document.startViewTransition && !prefersReducedMotion()) {
+        document.startViewTransition(() => flushSync(() => setHash(h)));
+      } else {
+        setHash(h);
+      }
+    };
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
+
+  // Highlight the menu link of the section on screen (home page only).
+  useEffect(() => {
+    if (hash.startsWith("#/") || !("IntersectionObserver" in window)) {
+      setActiveId("");
+      return undefined;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActiveId(e.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    NAV_SECTIONS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+    return () => io.disconnect();
+  }, [hash, lang]);
 
   // After a page change: project page → top; section link → scroll to it.
   useLayoutEffect(() => {
@@ -105,6 +145,8 @@ export default function App() {
         name={t.hero.name}
         onToggleLang={() => setLang((l) => (l === "en" ? "ar" : "en"))}
         theme={theme}
+        activeId={activeId}
+        whatsapp={contact.whatsapp}
         onToggleTheme={() => setTheme((m) => (m === "dark" ? "light" : "dark"))}
       />
 
@@ -131,7 +173,7 @@ export default function App() {
             <Experience t={t.experienceSection} lang={lang} items={experience} />
             <Accomplishments t={t.about} />
             <Faq t={t.faq} />
-            <ContactForm t={t.contactSection} contact={contact} />
+            <ContactForm t={t.contactSection} planner={t.planner} contact={contact} />
           </>
         )}
       </main>

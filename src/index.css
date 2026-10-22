@@ -246,8 +246,16 @@ html[dir="ltr"] .flip-ltr {
   transition: color var(--ease);
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.is-active {
   color: var(--text);
+}
+
+.nav-link.is-active {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
 }
 
 .nav-actions {
@@ -369,7 +377,7 @@ html[dir="rtl"] .hero h1 {
 /* Blueprint stage with the two devices */
 .hero-stage {
   position: relative;
-  aspect-ratio: 1.08;
+  aspect-ratio: 1;
   border-radius: var(--radius-lg);
   background-color: var(--surface-2);
   background-image:
@@ -382,17 +390,17 @@ html[dir="rtl"] .hero h1 {
 
 .stage-laptop {
   position: absolute;
-  width: 88%;
-  top: 11%;
-  inset-inline-end: -6%;
+  width: 86%;
+  top: 7%;
+  inset-inline-start: 5%;
   animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .stage-phone {
   position: absolute;
-  width: 34%;
-  bottom: -9%;
-  inset-inline-start: 7%;
+  width: 32%;
+  bottom: -17%;
+  inset-inline-end: 5%;
   animation: rise 0.9s 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
@@ -506,14 +514,34 @@ html[dir="rtl"] .mock {
   gap: 3cqw;
 }
 
-.mock-list li {
+.mock-row,
+.mock-row-btn {
   display: flex;
   align-items: center;
   gap: 3.5cqw;
+  width: 100%;
   background: #fff;
   border: 1px solid #e3e6ee;
   border-radius: 3.5cqw;
   padding: 3cqw;
+  font: inherit;
+  color: inherit;
+  text-align: start;
+}
+
+.mock-row-btn {
+  cursor: pointer;
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+
+.mock-row-btn:hover {
+  border-color: #1f4fd8;
+  box-shadow: 0 0 0 1.5px rgba(31, 79, 216, 0.25);
+}
+
+.mock-row-btn:focus-visible {
+  outline: 2px solid #1f4fd8;
+  outline-offset: 1px;
 }
 
 .mock-avatar {
@@ -584,6 +612,10 @@ html[dir="rtl"] .mock {
 }
 
 .mock-button {
+  display: block;
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
   margin: 0 4cqw 6cqw;
   background: #1f4fd8;
   color: #fff;
@@ -647,6 +679,70 @@ html[dir="rtl"] .mock {
 .mock-table tfoot td {
   font-weight: 700;
   border-bottom: 0;
+}
+
+.mock-button:disabled {
+  background: #157347;
+  cursor: default;
+}
+
+.mock-table tr.is-flash td {
+  animation: flash 1.2s ease;
+}
+
+@keyframes flash {
+  0%,
+  35% {
+    background: #fdf3d0;
+  }
+}
+
+/* Live demo bar under the stage */
+.hero-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.demo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 36px;
+}
+
+.demo-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.demo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+.demo-reset {
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  padding: 0.4rem 0;
+  min-height: 36px;
+  white-space: nowrap;
+}
+
+.demo-reset:hover {
+  text-decoration: underline;
 }
 
 /* =====================================================================
@@ -1536,6 +1632,286 @@ html[dir="rtl"] .pp-header h1 {
   gap: 0.5rem;
 }
 
+
+/* =====================================================================
+   Contact: copy button + project planner
+   ===================================================================== */
+.contact-wa {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.contact-wa .contact-link {
+  flex: 1;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 1rem;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.93rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color var(--ease);
+}
+
+.copy-btn:hover {
+  border-color: var(--line-strong);
+}
+
+.planner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.planner-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  outline: none;
+}
+
+.planner-step {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.93rem;
+}
+
+.planner-progress {
+  display: flex;
+  gap: 6px;
+}
+
+.planner-progress span {
+  width: 34px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--line);
+  transition: background-color 0.3s ease;
+}
+
+.planner-progress span.is-on {
+  background: var(--primary);
+}
+
+.planner fieldset {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.planner legend {
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.choices {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.choices-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.choices-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.choice {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  background: var(--bg);
+  transition: border-color var(--ease), background-color var(--ease);
+}
+
+.choice:hover {
+  border-color: var(--line-strong);
+}
+
+.choice input,
+.check input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice:has(input:focus-visible),
+.check:has(input:focus-visible) {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.choice.is-on {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+}
+
+.choice-label {
+  font-weight: 600;
+}
+
+.choice-hint {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 1rem;
+}
+
+.check {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.45rem 0;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.check-box {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--line-strong);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  color: transparent;
+  transition: background-color var(--ease), border-color var(--ease);
+}
+
+.check.is-on .check-box {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.planner-summary {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+}
+
+.planner-summary-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.planner-summary h3 {
+  font-size: 1.05rem;
+}
+
+.link-btn {
+  background: none;
+  border: 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  min-height: 36px;
+}
+
+.planner-summary dl {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.planner-summary dl div {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.planner-summary dt {
+  color: var(--muted);
+}
+
+.planner-error {
+  color: #b42318;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+:root[data-theme="dark"] .planner-error {
+  color: #ff8a80;
+}
+
+.planner-sent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--ok) 12%, transparent);
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.planner-sent .icon {
+  margin-top: 0.2rem;
+}
+
+.planner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.planner-actions .btn-primary {
+  margin-inline-start: auto;
+}
+
+/* =====================================================================
+   Page transition between the home page and a project page
+   ===================================================================== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
 /* =====================================================================
    Responsive
    ===================================================================== */
@@ -1718,11 +2094,57 @@ html[dir="rtl"] .pp-header h1 {
     bottom: 16px;
     inset-inline-end: 16px;
   }
+
+  .planner {
+    padding: 1.4rem;
+  }
+
+  .choices-2,
+  .choices-3,
+  .checks,
+  .form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .planner-actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .planner-actions .btn-primary {
+    margin-inline-start: 0;
+    order: -1;
+  }
+
+  .demo-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .hero-stage {
+    aspect-ratio: 0.85;
+  }
+
+  .stage-laptop {
+    width: 90%;
+    inset-inline-start: 4%;
+  }
+
+  .stage-phone {
+    width: 42%;
+    bottom: -22%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 
   *,

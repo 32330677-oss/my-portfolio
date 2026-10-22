@@ -38,7 +38,7 @@ export default function ProjectPage({ project, nextProject, lang, t, contact }) 
           </div>
 
           {!hasImages && project.mock && (
-            <div className="pp-visual" aria-hidden="true">
+            <div className="pp-visual" aria-hidden="true" style={{ viewTransitionName: `visual-${project.slug}` }}>
               <Phone mock={project.mock} lang={lang} />
             </div>
           )}
