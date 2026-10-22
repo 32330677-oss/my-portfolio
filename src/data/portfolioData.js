@@ -4,8 +4,8 @@
 // ============================================================================
 
 export const contact = {
-  whatsapp: "96171803869", // international format, digits only (used in wa.me links)
-  whatsappDisplay: "+961 71 803 869",
+  whatsapp: "963935394498", // international format, digits only (used in wa.me links)
+  whatsappDisplay: "+963 935 394 498",
   email: "hamzaheshmeh9@gmail.com",
   linkedin: "https://www.linkedin.com/in/hamza-hashma",
   github: "", // e.g. "https://github.com/your-username" (empty = hidden)
