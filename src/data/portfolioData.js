@@ -12,6 +12,14 @@ export const contact = {
   resumeUrl: "", // e.g. "/Hamza_Hashma_CV.pdf" after you put the PDF in /public (empty = hidden)
 };
 
+// Screenshots for the laptop and phone at the top of the home page.
+// Empty = a drawn screen of Team Flow is shown instead.
+// Example: laptop: "/projects/team-flow/payroll.png", phone: "/projects/team-flow/attendance.png"
+export const heroShots = {
+  laptop: "",
+  phone: "",
+};
+
 export const stack = [
   "Flutter", "Dart", "React", "JavaScript", "Node.js", "Express",
   "MySQL", "REST APIs", "HTML & CSS", "Python", "Java", "Git",
@@ -28,6 +36,7 @@ export const stack = [
 export const projects = [
   {
     slug: "team-flow",
+    mock: "attendance", // drawn illustration shown until you add real screenshots in `images`
     year: "2025 – 2026",
     tags: ["Flutter", "Node.js", "Express", "MySQL", "AI API", "Render"],
     images: [],
@@ -36,12 +45,12 @@ export const projects = [
     featured: true,
     text: {
       en: {
-        category: "Client work · Full‑stack",
+        category: "Client project",
         title: "Team Flow",
         subtitle: "Workforce, attendance & payroll system",
         summary: "A complete system for a construction company to manage site workers and office staff, from daily attendance to payroll and site reports.",
         role: "Sole developer: design, mobile & web app, back end, database, deployment",
-        platforms: "Android · iPhone · Web · Windows",
+        platforms: "Android, iPhone, web and Windows",
         problem: "Attendance for workers spread across several construction sites was hard to track and verify, and payroll had to be prepared by hand from many sources, which took time and left room for mistakes.",
         solution: "One app with a separate experience for each role. Site supervisors record attendance from their phones, the admin reviews and approves it, and payroll is calculated automatically from approved attendance and contract rates. Fingerprint‑device data, reports and documents all live in the same system.",
         features: [
@@ -56,12 +65,12 @@ export const projects = [
         ],
       },
       ar: {
-        category: "مشروع لعميل · Full‑stack",
+        category: "مشروع لعميل",
         title: "Team Flow",
         subtitle: "نظام إدارة العمال والحضور والرواتب",
         summary: "نظام متكامل لشركة مقاولات لإدارة عمال المواقع وموظفي المكتب، من الحضور اليومي لحد الرواتب وتقارير المواقع.",
         role: "المطوّر الوحيد: التصميم، تطبيق الموبايل والويب، السيرفر، قاعدة البيانات والنشر",
-        platforms: "أندرويد · آيفون · ويب · ويندوز",
+        platforms: "أندرويد، آيفون، ويب وويندوز",
         problem: "حضور العمال الموزعين على أكتر من موقع بناء كان صعب ينضبط ويتأكد منه، والرواتب كانت تنحسب يدوياً من مصادر كتيرة، وهالشي بياخد وقت وبيفتح مجال للغلط.",
         solution: "تطبيق واحد فيه واجهة خاصة لكل دور. مشرف الموقع بيسجل الحضور من موبايله، المدير بيراجع وبيوافق، والرواتب بتنحسب تلقائياً من الحضور المعتمد وأسعار العقود. بيانات أجهزة البصمة والتقارير والمستندات كلها بنفس النظام.",
         features: [
@@ -79,6 +88,7 @@ export const projects = [
   },
   {
     slug: "equipment-flow",
+    mock: "machines",
     year: "2026",
     tags: ["Flutter", "Node.js", "REST API", "PDF"],
     images: [],
@@ -87,12 +97,12 @@ export const projects = [
     featured: true,
     text: {
       en: {
-        category: "Client work · Full‑stack",
+        category: "Client project",
         title: "Equipment Flow",
         subtitle: "Rented machinery tracking & vendor payroll",
         summary: "An app for tracking rented machinery on construction sites, from the hours each machine works to what each vendor gets paid.",
         role: "Sole developer: mobile & desktop app, back end and database",
-        platforms: "Android · iPhone · Web · Windows",
+        platforms: "Android, iPhone, web and Windows",
         problem: "Rented machines work across many sites and every vendor has its own prices. Tracking working hours on paper and turning them into correct vendor payments every month was slow and error‑prone.",
         solution: "Supervisors record each machine's day from their phone (check in, pause, check out). Accountants work from a desktop dashboard with a live board, review the hours, upload the signed paper sheets and generate vendor payroll from the price rules.",
         features: [
@@ -106,12 +116,12 @@ export const projects = [
         ],
       },
       ar: {
-        category: "مشروع لعميل · Full‑stack",
+        category: "مشروع لعميل",
         title: "Equipment Flow",
         subtitle: "متابعة الآليات المستأجرة ورواتب الموردين",
         summary: "تطبيق لمتابعة الآليات المستأجرة بمواقع البناء، من ساعات شغل كل آلية لحد المبلغ اللي بياخده كل مورد.",
         role: "المطوّر الوحيد: تطبيق الموبايل والديسكتوب، السيرفر وقاعدة البيانات",
-        platforms: "أندرويد · آيفون · ويب · ويندوز",
+        platforms: "أندرويد، آيفون، ويب وويندوز",
         problem: "الآليات المستأجرة بتشتغل بمواقع كتيرة وكل مورد إله أسعاره. متابعة الساعات عالورق وتحويلها لدفعات صحيحة للموردين كل شهر كان بطيء وفيه أغلاط.",
         solution: "المشرف بيسجل يوم كل آلية من موبايله (دخول، توقف، خروج). المحاسب بيشتغل من لوحة تحكم عالكمبيوتر فيها لوحة مباشرة، بيراجع الساعات، بيرفع الجداول الورقية الموقعة وبيطلّع رواتب الموردين حسب قواعد الأسعار.",
         features: [
@@ -136,9 +146,9 @@ export const projects = [
     featured: false,
     text: {
       en: {
-        category: "Integration · Back end",
+        category: "Integration",
         title: "Biometric Connector",
-        subtitle: "Fingerprint devices → Team Flow",
+        subtitle: "Connects fingerprint devices to Team Flow",
         summary: "A Node.js tool that reads fingerprint‑device export files and sends every punch securely to the Team Flow server.",
         role: "Design and development",
         platforms: "Server (Node.js)",
@@ -152,9 +162,9 @@ export const projects = [
         ],
       },
       ar: {
-        category: "ربط أنظمة · Back end",
+        category: "ربط أنظمة",
         title: "موصّل أجهزة البصمة",
-        subtitle: "من أجهزة البصمة لـ Team Flow",
+        subtitle: "بيربط أجهزة البصمة مع Team Flow",
         summary: "أداة Node.js بتقرا ملفات أجهزة البصمة وبتبعت كل بصمة بشكل آمن لسيرفر Team Flow.",
         role: "التصميم والبرمجة",
         platforms: "سيرفر (Node.js)",
@@ -179,7 +189,7 @@ export const projects = [
     featured: false,
     text: {
       en: {
-        category: "University · Research",
+        category: "University research",
         title: "Generative AI in Engineering",
         subtitle: "Academic research project, Lebanese International University",
         summary: "Research on applying generative AI models (GANs and Transformers) to engineering and architectural design problems.",
@@ -194,7 +204,7 @@ export const projects = [
         ],
       },
       ar: {
-        category: "جامعة · بحث",
+        category: "بحث جامعي",
         title: "الذكاء الاصطناعي التوليدي بالهندسة",
         subtitle: "مشروع بحثي أكاديمي، الجامعة اللبنانية الدولية",
         summary: "بحث عن استخدام نماذج الذكاء الاصطناعي التوليدي (GANs و Transformers) بمسائل التصميم الهندسي والمعماري.",
@@ -220,7 +230,7 @@ export const projects = [
     featured: false,
     text: {
       en: {
-        category: "Concept · Harvard Aspiring Leaders",
+        category: "Concept",
         title: "Financial Intelligence App",
         subtitle: "App concept developed during Harvard's Aspiring Leaders Program",
         summary: "A proposal for a mobile app that teaches young people financial intelligence in a simple, practical way.",
@@ -235,7 +245,7 @@ export const projects = [
         ],
       },
       ar: {
-        category: "فكرة · Harvard Aspiring Leaders",
+        category: "فكرة",
         title: "تطبيق الذكاء المالي",
         subtitle: "فكرة تطبيق طوّرتها ضمن برنامج القادة الطموحين بجامعة هارفارد",
         summary: "مقترح تطبيق موبايل بيعلّم الشباب الذكاء المالي بطريقة بسيطة وعملية.",
@@ -261,7 +271,7 @@ export const projects = [
     featured: false,
     text: {
       en: {
-        category: "Personal · Web",
+        category: "Personal project",
         title: "This Portfolio",
         subtitle: "Bilingual personal website",
         summary: "The website you're on: built from scratch with React, in Arabic and English, with dark and light themes.",
@@ -277,7 +287,7 @@ export const projects = [
         ],
       },
       ar: {
-        category: "شخصي · ويب",
+        category: "مشروع شخصي",
         title: "هالموقع",
         subtitle: "موقع شخصي باللغتين",
         summary: "الموقع اللي إنت عليه هلق: مبني من الصفر بـ React، بالعربي والإنكليزي، مع وضع داكن وفاتح.",
@@ -324,8 +334,8 @@ export const experience = [
   {
     date: { en: "May 2024 – Present", ar: "أيار 2024 – حالياً" },
     text: {
-      en: { role: "Robotics Team Manager", org: "STEP‑AUB · Beqaa", desc: "Plan and manage robotics workshops for 15+ students with project‑based learning, and coach them for local competitions." },
-      ar: { role: "مدير فريق الروبوتيكس", org: "STEP‑AUB · البقاع", desc: "بخطط وبدير ورشات روبوتيكس لأكتر من 15 طالب بأسلوب التعلم بالمشاريع، وبجهزهم للمسابقات المحلية." },
+      en: { role: "Robotics Team Manager", org: "STEP‑AUB, Beqaa", desc: "Plan and manage robotics workshops for 15+ students with project‑based learning, and coach them for local competitions." },
+      ar: { role: "مدير فريق الروبوتيكس", org: "STEP‑AUB، البقاع", desc: "بخطط وبدير ورشات روبوتيكس لأكتر من 15 طالب بأسلوب التعلم بالمشاريع، وبجهزهم للمسابقات المحلية." },
     },
   },
   {
@@ -365,7 +375,7 @@ export const portfolioData = {
       experience: "Experience",
       faq: "FAQ",
       contact: "Contact",
-      cta: "Let's talk",
+      cta: "WhatsApp",
       langSwitch: "عربي",
       themeLight: "Switch to light mode",
       themeDark: "Switch to dark mode",
@@ -374,17 +384,12 @@ export const portfolioData = {
       badge: "Available for new projects",
       name: "Hamza Hashma",
       title: "Web & Mobile App Developer",
-      headlineStart: "Turn your idea into",
-      typed: ["a professional website", "an online store", "a mobile app", "a management system"],
+      headline: "Your idea, as a website or app people actually use.",
       bio: "I design and build websites, online stores, Android & iPhone apps and custom management systems for shops, companies, restaurants and clinics, from the first sketch to launch and support.",
-      primary: "Start a project",
+      proof: "I built the attendance and payroll system a construction company runs on every day.",
+      primary: "Message me on WhatsApp",
       secondary: "See my work",
       resume: "Download CV",
-      highlights: [
-        { value: "Web + Mobile", label: "One developer, both platforms" },
-        { value: "Full‑stack", label: "Front end, back end & database" },
-        { value: "Arabic + English", label: "Interfaces in both languages" },
-      ],
     },
     services: {
       kicker: "What I do",
@@ -401,11 +406,12 @@ export const portfolioData = {
     projectsSection: {
       kicker: "Selected work",
       title: "Projects",
-      details: "View details",
+      details: "Read the case study",
+      more_details: "Details",
       more: "More projects",
     },
     projectPage: {
-      back: "All projects",
+      back: "Back to all projects",
       role: "My role",
       platforms: "Platforms",
       year: "Year",
@@ -419,13 +425,13 @@ export const portfolioData = {
       next: "Next project",
       ctaTitle: "Want something like this for your business?",
       ctaText: "Tell me what you need and I'll get back to you with ideas, a timeline and a price.",
-      ctaButton: "Chat on WhatsApp",
+      ctaButton: "Message me on WhatsApp",
       devHint: "Add screenshots: put image files in public/projects/{slug}/ and list them in `images` in src/data/portfolioData.js. (This note is only visible while developing.)",
     },
     stackTitle: "Technologies I work with",
     whyMe: {
       kicker: "Why work with me",
-      title: "What you get",
+      title: "Why work with me",
       items: [
         { icon: "check", title: "Systems that are really used", desc: "My apps run every day inside a real company, with real users and real data, not just demos." },
         { icon: "system", title: "One person, start to finish", desc: "Design, app, server, database and publishing: you deal with one person who knows the whole project." },
@@ -435,10 +441,10 @@ export const portfolioData = {
     },
     packages: {
       kicker: "Packages",
-      title: "Pick a starting point",
+      title: "Packages",
       text: "Every project is priced after we talk, based on what you actually need. These packages show what's usually included.",
       popular: "Most requested",
-      cta: "Ask for a quote",
+      cta: "Ask for a quote on WhatsApp",
       waIntro: "Hello Hamza, I'm interested in the package:",
       items: [
         {
@@ -511,9 +517,9 @@ export const portfolioData = {
       achievementsTitle: "Achievements & certificates",
       achievements: [
         { title: "Aspiring Leaders Program", issuer: "Harvard University", date: "2025" },
-        { title: "First Place — FinFit Youth Championship", issuer: "INJAZ Lebanon", date: "2025" },
+        { title: "First place, FinFit Youth Championship", issuer: "INJAZ Lebanon", date: "2025" },
         { title: "President's Honor List", issuer: "Lebanese International University", date: "2025" },
-        { title: "Diploma in Advanced Data Analytics", issuer: "PwC Middle East — Digital Heroes", date: "2025" },
+        { title: "Diploma in Advanced Data Analytics", issuer: "PwC Middle East, Digital Heroes", date: "2025" },
         { title: "Gold Medal Certificate", issuer: "Codecrafters Bootcamp", date: "2024" },
         { title: "DAFI Scholar", issuer: "UNHCR", date: "2023 – 2026" },
       ],
@@ -535,10 +541,10 @@ export const portfolioData = {
       kicker: "Contact",
       title: "Have a project in mind?",
       text: "Tell me about it. I'll reply with ideas, a timeline and a price.",
-      whatsapp: "Chat on WhatsApp",
+      whatsapp: "WhatsApp",
       email: "Email",
       linkedin: "LinkedIn",
-      floating: "Chat on WhatsApp",
+      floating: "Message me on WhatsApp",
       form: {
         name: "Your name",
         namePh: "e.g. Ahmad",
@@ -552,7 +558,7 @@ export const portfolioData = {
         typeLabel: "Project",
       },
     },
-    footer: "Built with React by Hamza Hashma",
+    footer: "Designed and built by Hamza Hashma",
   },
 
   ar: {
@@ -564,7 +570,7 @@ export const portfolioData = {
       experience: "الخبرات",
       faq: "أسئلة",
       contact: "تواصل",
-      cta: "تواصل معي",
+      cta: "واتساب",
       langSwitch: "EN",
       themeLight: "الوضع الفاتح",
       themeDark: "الوضع الداكن",
@@ -573,17 +579,12 @@ export const portfolioData = {
       badge: "متاح لمشاريع جديدة",
       name: "حمزة هشمة",
       title: "مطوّر مواقع وتطبيقات",
-      headlineStart: "حوّل فكرتك إلى",
-      typed: ["موقع احترافي", "متجر إلكتروني", "تطبيق موبايل", "نظام إدارة"],
+      headline: "فكرتك، موقع أو تطبيق بيستعمله الناس فعلاً.",
       bio: "بصمّم وببرمج مواقع، متاجر إلكترونية، تطبيقات أندرويد وآيفون، وأنظمة إدارة مخصصة للمحلات والشركات والمطاعم والعيادات، من أول فكرة لحد الإطلاق والدعم.",
-      primary: "ابدأ مشروعك",
+      proof: "بنيت نظام الحضور والرواتب اللي بتشتغل عليه شركة مقاولات كل يوم.",
+      primary: "راسلني على واتساب",
       secondary: "شوف أعمالي",
       resume: "تحميل السيرة الذاتية",
-      highlights: [
-        { value: "ويب + موبايل", label: "مطوّر واحد للمنصتين" },
-        { value: "Full‑stack", label: "واجهة، سيرفر وقاعدة بيانات" },
-        { value: "عربي + إنكليزي", label: "واجهات باللغتين" },
-      ],
     },
     services: {
       kicker: "شو بقدّم",
@@ -600,11 +601,12 @@ export const portfolioData = {
     projectsSection: {
       kicker: "من أعمالي",
       title: "المشاريع",
-      details: "شوف التفاصيل",
+      details: "اقرا تفاصيل المشروع",
+      more_details: "التفاصيل",
       more: "مشاريع تانية",
     },
     projectPage: {
-      back: "كل المشاريع",
+      back: "رجوع لكل المشاريع",
       role: "دوري",
       platforms: "المنصات",
       year: "السنة",
@@ -618,13 +620,13 @@ export const portfolioData = {
       next: "المشروع التالي",
       ctaTitle: "بدك شي متل هيك لشغلك؟",
       ctaText: "احكيلي شو بدك، وبرد عليك بأفكار ومدة تنفيذ وسعر.",
-      ctaButton: "راسلني واتساب",
+      ctaButton: "راسلني على واتساب",
       devHint: "لإضافة صور: حط ملفات الصور بـ public/projects/{slug}/ واكتبهن بـ images بملف src/data/portfolioData.js. (هالملاحظة بتبيّن بس وقت التطوير.)",
     },
     stackTitle: "التقنيات اللي بشتغل فيها",
     whyMe: {
       kicker: "ليش تشتغل معي",
-      title: "شو بتاخد معي",
+      title: "ليش تشتغل معي",
       items: [
         { icon: "check", title: "أنظمة مستعملة فعلاً", desc: "تطبيقاتي شغالة كل يوم بشركة حقيقية، مع مستخدمين وبيانات حقيقية، مش بس تجارب." },
         { icon: "system", title: "شخص واحد من الأول للآخر", desc: "التصميم، التطبيق، السيرفر، قاعدة البيانات والنشر: بتتعامل مع شخص واحد فاهم كل المشروع." },
@@ -634,10 +636,10 @@ export const portfolioData = {
     },
     packages: {
       kicker: "الباقات",
-      title: "اختار من وين تبلّش",
+      title: "الباقات",
       text: "سعر كل مشروع بيتحدد بعد ما نحكي، حسب اللي بتحتاجه فعلاً. هالباقات بتوضّح شو عادةً بيكون فيها.",
       popular: "الأكتر طلباً",
-      cta: "اطلب عرض سعر",
+      cta: "اطلب عرض سعر عالواتساب",
       waIntro: "مرحبا حمزة، مهتم بباقة:",
       items: [
         {
@@ -710,9 +712,9 @@ export const portfolioData = {
       achievementsTitle: "إنجازات وشهادات",
       achievements: [
         { title: "برنامج القادة الطموحين (Aspiring Leaders)", issuer: "جامعة هارفارد", date: "2025" },
-        { title: "المركز الأول — بطولة FinFit للشباب", issuer: "إنجاز لبنان", date: "2025" },
+        { title: "المركز الأول ببطولة FinFit للشباب", issuer: "إنجاز لبنان", date: "2025" },
         { title: "لائحة شرف رئيس الجامعة", issuer: "الجامعة اللبنانية الدولية", date: "2025" },
-        { title: "دبلوم تحليل البيانات المتقدم", issuer: "PwC الشرق الأوسط — Digital Heroes", date: "2025" },
+        { title: "دبلوم تحليل البيانات المتقدم", issuer: "PwC الشرق الأوسط، Digital Heroes", date: "2025" },
         { title: "شهادة الميدالية الذهبية", issuer: "Codecrafters Bootcamp", date: "2024" },
         { title: "منحة DAFI", issuer: "UNHCR", date: "2023 – 2026" },
       ],
@@ -734,10 +736,10 @@ export const portfolioData = {
       kicker: "تواصل",
       title: "عندك فكرة مشروع؟",
       text: "احكيلي عنها، وبرد عليك بأفكار ومدة تنفيذ وسعر.",
-      whatsapp: "راسلني واتساب",
+      whatsapp: "واتساب",
       email: "الإيميل",
       linkedin: "لينكدإن",
-      floating: "راسلني واتساب",
+      floating: "راسلني على واتساب",
       form: {
         name: "اسمك",
         namePh: "مثلاً: أحمد",
@@ -751,6 +753,6 @@ export const portfolioData = {
         typeLabel: "المشروع",
       },
     },
-    footer: "مبني بـ React — حمزة هشمة",
+    footer: "تصميم وبرمجة حمزة هشمة",
   },
 };

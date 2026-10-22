@@ -1,22 +1,18 @@
-import Icon from "./Icon";
 import SectionHeader from "./SectionHeader";
 
 export default function WhyMe({ t }) {
   return (
-    <section className="section section-alt">
+    <section className="section">
       <div className="container">
-        <SectionHeader kicker={t.kicker} title={t.title} />
-        <div className="why-grid">
-          {t.items.map((item, i) => (
-            <div key={item.title} className="why-item reveal" style={{ "--d": `${i * 80}ms` }}>
-              <div className="icon-box">
-                <Icon name={item.icon} size={24} />
-              </div>
-              <h3>{item.title}</h3>
-              <p>{item.desc}</p>
+        <SectionHeader title={t.title} />
+        <dl className="why-grid">
+          {t.items.map((item) => (
+            <div key={item.title} className="why-item">
+              <dt>{item.title}</dt>
+              <dd>{item.desc}</dd>
             </div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   );

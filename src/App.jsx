@@ -13,7 +13,7 @@ import ProjectPage from "./components/ProjectPage";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import Packages from "./components/Packages";
 import NotFound from "./components/NotFound";
-import { portfolioData, contact, stack, projects, experience } from "./data/portfolioData";
+import { portfolioData, contact, stack, projects, experience, heroShots } from "./data/portfolioData";
 
 // ---- small helpers -------------------------------------------------------
 const storage = {
@@ -34,7 +34,7 @@ const getInitialLang = () => {
 const getInitialTheme = () => {
   const saved = storage.get("theme");
   if (saved === "light" || saved === "dark") return saved;
-  return "dark";
+  return "light";
 };
 
 // Simple hash router: "#/project/team-flow" shows a project page,
@@ -44,31 +44,6 @@ const projectSlugFrom = (hash) => {
   const m = hash.match(/^#\/project\/([\w-]+)/);
   return m ? m[1] : null;
 };
-
-// Fade/slide elements with class "reveal" into view while scrolling.
-function useReveal(deps) {
-  useEffect(() => {
-    const els = document.querySelectorAll(".reveal:not(.is-visible)");
-    if (!("IntersectionObserver" in window)) {
-      els.forEach((el) => el.classList.add("is-visible"));
-      return undefined;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-visible");
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
-}
 
 // ---- app -----------------------------------------------------------------
 export default function App() {
@@ -101,7 +76,7 @@ export default function App() {
   // Theme.
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#070b14" : "#f6f8fc");
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#0E1626" : "#F3F1EC");
     storage.set("theme", theme);
   }, [theme]);
 
@@ -121,8 +96,6 @@ export default function App() {
     const id = hash.replace(/^#/, "");
     if (id) document.getElementById(id)?.scrollIntoView();
   }, [hash]);
-
-  useReveal([hash, lang]);
 
   return (
     <div className="app">
@@ -149,7 +122,7 @@ export default function App() {
           />
         ) : (
           <>
-            <Hero t={t.hero} contact={contact} />
+            <Hero t={t.hero} contact={contact} lang={lang} heroShots={heroShots} />
             <Services t={t.services} />
             <Projects t={t.projectsSection} lang={lang} projects={projects} stack={stack} stackTitle={t.stackTitle} />
             <WhyMe t={t.whyMe} />
@@ -166,7 +139,7 @@ export default function App() {
       <footer className="footer">
         <div className="container footer-inner">
           <span>© {new Date().getFullYear()} {t.hero.name}</span>
-          <span className="mono">{t.footer}</span>
+          <span>{t.footer}</span>
         </div>
       </footer>
 

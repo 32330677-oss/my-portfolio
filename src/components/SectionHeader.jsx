@@ -1,8 +1,8 @@
-export default function SectionHeader({ kicker, title }) {
+export default function SectionHeader({ title, lead }) {
   return (
-    <div className="section-header reveal">
-      <p className="kicker mono">// {kicker}</p>
+    <header className="section-header">
       <h2 className="section-title">{title}</h2>
-    </div>
+      {lead && <p className="section-lead">{lead}</p>}
+    </header>
   );
 }

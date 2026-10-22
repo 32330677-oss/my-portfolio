@@ -1,3 +1,4 @@
+import CaseStudy from "./CaseStudy";
 import ProjectCard from "./ProjectCard";
 import SectionHeader from "./SectionHeader";
 
@@ -8,38 +9,30 @@ export default function Projects({ t, lang, projects, stack, stackTitle }) {
   return (
     <section id="projects" className="section section-alt">
       <div className="container">
-        <SectionHeader kicker={t.kicker} title={t.title} />
+        <SectionHeader title={t.title} />
 
-        <div className="projects-grid projects-featured">
+        <div className="cases">
           {featured.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} lang={lang} label={t.details} index={i} large />
+            <CaseStudy key={project.slug} project={project} lang={lang} label={t.details} flip={i % 2 === 1} />
           ))}
         </div>
 
         {others.length > 0 && (
-          <>
-            <h3 className="sub-title more-title reveal">{t.more}</h3>
-            <div className="projects-grid projects-more">
-              {others.map((project, i) => (
-                <ProjectCard
-                  key={project.slug}
-                  project={project}
-                  lang={lang}
-                  label={t.details}
-                  index={featured.length + i}
-                />
+          <div className="more-projects">
+            <h3 className="sub-title">{t.more}</h3>
+            <ul className="project-rows">
+              {others.map((project) => (
+                <ProjectCard key={project.slug} project={project} lang={lang} label={t.more_details} />
               ))}
-            </div>
-          </>
+            </ul>
+          </div>
         )}
 
-        <div className="stack reveal">
-          <h3 className="stack-title">{stackTitle}</h3>
-          <ul className="stack-list">
-            {stack.map((s) => (
-              <li key={s} className="mono">{s}</li>
-            ))}
-          </ul>
+        <div className="stack">
+          <h3 className="sub-title">{stackTitle}</h3>
+          <p className="stack-list" dir="ltr">
+            {stack.join(", ")}
+          </p>
         </div>
       </div>
     </section>

@@ -1,26 +1,22 @@
-import Icon from "./Icon";
-import TypeWriter from "./TypeWriter";
+import { Laptop, Phone } from "./Devices";
 
-export default function Hero({ t, contact }) {
+export default function Hero({ t, contact, lang, heroShots }) {
   return (
     <section id="top" className="hero">
       <div className="container hero-inner">
         <div className="hero-text">
-          <div className="hero-badge reveal">
-            <span className="pulse" aria-hidden="true" /> {t.badge}
-          </div>
-          <p className="hero-title mono reveal">&lt;{t.title} /&gt;</p>
-          <h1 className="reveal" aria-label={`${t.headlineStart} ${t.typed.join(", ")}`}>
-            <span aria-hidden="true">{t.headlineStart}</span>
-            <br />
-            {/* key: restart typing when the language changes */}
-            <TypeWriter key={t.typed.join("|")} words={t.typed} />
-          </h1>
-          <p className="hero-bio reveal">{t.bio}</p>
+          <p className="hero-badge">
+            <span className="badge-dot" aria-hidden="true" />
+            {t.badge}
+          </p>
+          <p className="hero-role">{t.name}, {t.title}</p>
+          <h1>{t.headline}</h1>
+          <p className="hero-bio">{t.bio}</p>
+          <p className="hero-proof">{t.proof}</p>
 
-          <div className="hero-actions reveal">
-            <a href="#contact" className="btn btn-primary">
-              {t.primary} <Icon name="arrow" size={18} className="flip-rtl" />
+          <div className="hero-actions">
+            <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer" className="btn btn-primary">
+              {t.primary}
             </a>
             <a href="#projects" className="btn btn-outline">
               {t.secondary}
@@ -33,31 +29,15 @@ export default function Hero({ t, contact }) {
           </div>
         </div>
 
-        <div className="hero-card reveal" aria-hidden="true">
-          <div className="code-window float">
-            <div className="code-dots"><span /><span /><span /></div>
-            <pre className="mono">
-{`const project = {
-  client: "`}<b>you</b>{`",
-  platforms: ["web", "android", "ios"],
-  languages: ["ar", "en"],
-  status: "`}<b className="ok">launched</b>{`",
-};`}
-            </pre>
+        {/* The one animated moment on the page: the devices arrive on load. */}
+        <div className="hero-stage" aria-hidden="true">
+          <div className="stage-laptop">
+            <Laptop src={heroShots.laptop} mock="payroll" lang={lang} />
           </div>
-          <p className="hero-name">{t.name}</p>
+          <div className="stage-phone">
+            <Phone src={heroShots.phone} mock="attendance" lang={lang} />
+          </div>
         </div>
-      </div>
-
-      <div className="container">
-        <ul className="highlights reveal">
-          {t.highlights.map((h) => (
-            <li key={h.value}>
-              <strong>{h.value}</strong>
-              <span>{h.label}</span>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );
