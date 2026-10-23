@@ -7,7 +7,7 @@ const isDev = Boolean(import.meta.env?.DEV);
 export default function ProjectPage({ project, nextProject, lang, t, contact }) {
   const p = project.text[lang];
   const next = nextProject.text[lang];
-  const waText = encodeURIComponent(`${lang === "ar" ? "مرحبا حمزة، شفت مشروع" : "Hello Hamza, I saw your project"} ${p.title}`);
+  const mailSubject = encodeURIComponent(p.title);
   const hasImages = project.images.length > 0;
 
   return (
@@ -53,10 +53,12 @@ export default function ProjectPage({ project, nextProject, lang, t, contact }) 
             <dt>{t.platforms}</dt>
             <dd>{p.platforms}</dd>
           </div>
-          <div>
-            <dt>{t.year}</dt>
-            <dd>{project.year}</dd>
-          </div>
+          {project.year && (
+            <div>
+              <dt>{t.year}</dt>
+              <dd>{project.year}</dd>
+            </div>
+          )}
         </dl>
 
         {hasImages ? (
@@ -114,7 +116,7 @@ export default function ProjectPage({ project, nextProject, lang, t, contact }) 
             <h2>{t.ctaTitle}</h2>
             <p>{t.ctaText}</p>
           </div>
-          <a className="btn btn-primary" href={`https://wa.me/${contact.whatsapp}?text=${waText}`} target="_blank" rel="noreferrer">
+          <a className="btn btn-primary" href={`mailto:${contact.email}?subject=${mailSubject}`}>
             {t.ctaButton}
           </a>
         </section>

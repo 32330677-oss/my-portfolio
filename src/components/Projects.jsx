@@ -2,7 +2,7 @@ import CaseStudy from "./CaseStudy";
 import ProjectCard from "./ProjectCard";
 import SectionHeader from "./SectionHeader";
 
-export default function Projects({ t, lang, projects, stack, stackTitle }) {
+export default function Projects({ t, lang, projects }) {
   const featured = projects.filter((p) => p.featured);
   const others = projects.filter((p) => !p.featured);
 
@@ -28,12 +28,6 @@ export default function Projects({ t, lang, projects, stack, stackTitle }) {
           </div>
         )}
 
-        <div className="stack">
-          <h3 className="sub-title">{stackTitle}</h3>
-          <p className="stack-list" dir="ltr">
-            {stack.join(", ")}
-          </p>
-        </div>
       </div>
     </section>
   );

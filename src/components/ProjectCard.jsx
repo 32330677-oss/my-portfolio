@@ -10,7 +10,7 @@ export default function ProjectCard({ project, lang, label }) {
         </span>
         <span className="project-row-meta">
           <span>{p.category}</span>
-          <span>{project.year}</span>
+          {project.year && <span>{project.year}</span>}
         </span>
         <span className="project-row-link">{label}</span>
       </a>

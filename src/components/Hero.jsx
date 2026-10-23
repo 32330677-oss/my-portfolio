@@ -9,16 +9,14 @@ export default function Hero({ t, contact, lang, heroShots }) {
             <span className="badge-dot" aria-hidden="true" />
             {t.badge}
           </p>
-          <p className="hero-role">{t.name}, {t.title}</p>
           <h1>{t.headline}</h1>
           <p className="hero-bio">{t.bio}</p>
-          <p className="hero-proof">{t.proof}</p>
 
           <div className="hero-actions">
-            <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer" className="btn btn-primary">
+            <a href="#projects" className="btn btn-primary">
               {t.primary}
             </a>
-            <a href="#projects" className="btn btn-outline">
+            <a href={`mailto:${contact.email}`} className="btn btn-outline">
               {t.secondary}
             </a>
             {contact.resumeUrl && (
@@ -29,7 +27,7 @@ export default function Hero({ t, contact, lang, heroShots }) {
           </div>
         </div>
 
-        {/* The one animated moment on load; after that it only moves when you use it. */}
+        {/* Animates once on load; after that it only moves when you use it. */}
         <LiveDemo key={lang} lang={lang} hint={t.demoHint} resetLabel={t.demoReset} heroShots={heroShots} />
       </div>
     </section>

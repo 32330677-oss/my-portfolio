@@ -2,19 +2,15 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Services from "./components/Services";
 import Projects from "./components/Projects";
-import WhyMe from "./components/WhyMe";
-import Process from "./components/Process";
 import Experience from "./components/Experience";
-import Accomplishments from "./components/Accomplishments";
-import Faq from "./components/Faq";
-import ContactForm from "./components/ContactForm";
 import ProjectPage from "./components/ProjectPage";
-import WhatsAppFloat from "./components/WhatsAppFloat";
-import Packages from "./components/Packages";
 import NotFound from "./components/NotFound";
-import { portfolioData, contact, stack, projects, experience, heroShots } from "./data/portfolioData";
+import Skills from "./components/Skills";
+import Quote from "./components/Quote";
+import Awards from "./components/Awards";
+import Contact from "./components/Contact";
+import { portfolioData, contact, projects, experience, heroShots } from "./data/portfolioData";
 
 // ---- small helpers -------------------------------------------------------
 const storage = {
@@ -49,7 +45,7 @@ const projectSlugFrom = (hash) => {
 const prefersReducedMotion = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 // Sections the menu links to; the one on screen is highlighted in the menu.
-const NAV_SECTIONS = ["services", "projects", "packages", "experience", "faq", "contact"];
+const NAV_SECTIONS = ["projects", "skills", "experience", "awards", "contact"];
 
 // ---- app -----------------------------------------------------------------
 export default function App() {
@@ -146,7 +142,7 @@ export default function App() {
         onToggleLang={() => setLang((l) => (l === "en" ? "ar" : "en"))}
         theme={theme}
         activeId={activeId}
-        whatsapp={contact.whatsapp}
+        email={contact.email}
         onToggleTheme={() => setTheme((m) => (m === "dark" ? "light" : "dark"))}
       />
 
@@ -165,15 +161,12 @@ export default function App() {
         ) : (
           <>
             <Hero t={t.hero} contact={contact} lang={lang} heroShots={heroShots} />
-            <Services t={t.services} />
-            <Projects t={t.projectsSection} lang={lang} projects={projects} stack={stack} stackTitle={t.stackTitle} />
-            <WhyMe t={t.whyMe} />
-            <Packages t={t.packages} contact={contact} />
-            <Process t={t.process} />
-            <Experience t={t.experienceSection} lang={lang} items={experience} />
-            <Accomplishments t={t.about} />
-            <Faq t={t.faq} />
-            <ContactForm t={t.contactSection} planner={t.planner} contact={contact} />
+            <Projects t={t.projectsSection} lang={lang} projects={projects} />
+            <Skills t={t.skills} />
+            <Experience t={t.experienceSection} lang={lang} items={experience} education={t.education} />
+            <Quote t={t.quote} />
+            <Awards t={t.awards} />
+            <Contact t={t.contactSection} contact={contact} />
           </>
         )}
       </main>
@@ -185,7 +178,6 @@ export default function App() {
         </div>
       </footer>
 
-      <WhatsAppFloat number={contact.whatsapp} label={t.contactSection.floating} />
     </div>
   );
 }

@@ -1912,6 +1912,99 @@ html[dir="rtl"] .pp-header h1 {
   animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+
+/* =====================================================================
+   Portfolio sections: skills, education, quote
+   ===================================================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 3rem;
+}
+
+.skill-group {
+  border-top: 2px solid var(--text);
+  padding-top: 1.25rem;
+}
+
+.skill-group h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.skill-desc {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.skill-items {
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.skills-langs {
+  margin-top: 2.5rem;
+  color: var(--muted);
+}
+
+.education-title {
+  margin-top: 4rem;
+}
+
+.quote-band {
+  background: var(--band);
+  color: var(--on-band);
+  padding: 5rem 0;
+}
+
+.quote {
+  max-width: 52rem;
+}
+
+.quote blockquote p {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+html[dir="rtl"] .quote blockquote p {
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+
+.quote blockquote p::before {
+  content: "“";
+  color: var(--accent);
+}
+
+.quote blockquote p::after {
+  content: "”";
+  color: var(--accent);
+}
+
+html[dir="rtl"] .quote blockquote p::before {
+  content: "«";
+}
+
+html[dir="rtl"] .quote blockquote p::after {
+  content: "»";
+}
+
+.quote figcaption {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.75rem;
+  padding-inline-start: 1rem;
+  border-inline-start: 3px solid var(--accent);
+}
+
+.quote figcaption span {
+  color: var(--on-band-muted);
+}
+
 /* =====================================================================
    Responsive
    ===================================================================== */
@@ -1979,6 +2072,11 @@ html[dir="rtl"] .pp-header h1 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .skills-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
   .service-row {
     grid-template-columns: 44px minmax(0, 1fr);
     gap: 0.4rem 1rem;
@@ -2026,6 +2124,7 @@ html[dir="rtl"] .pp-header h1 {
 
   .why-grid,
   .process,
+  .skills-grid,
   .pp-story,
   .feature-list,
   .gallery {

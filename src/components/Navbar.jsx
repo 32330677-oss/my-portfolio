@@ -2,16 +2,15 @@ import { useState } from "react";
 import Icon from "./Icon";
 import Logo from "./Logo";
 
-export default function Navbar({ t, name, onToggleLang, theme, onToggleTheme, activeId, whatsapp }) {
+export default function Navbar({ t, name, onToggleLang, theme, onToggleTheme, activeId, email }) {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 
   const links = [
-    { href: "#services", label: t.services },
     { href: "#projects", label: t.projects },
-    { href: "#packages", label: t.packages },
+    { href: "#skills", label: t.skills },
     { href: "#experience", label: t.experience },
-    { href: "#faq", label: t.faq },
+    { href: "#awards", label: t.awards },
     { href: "#contact", label: t.contact },
   ];
 
@@ -36,7 +35,7 @@ export default function Navbar({ t, name, onToggleLang, theme, onToggleTheme, ac
               {l.label}
             </a>
           ))}
-          <a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm nav-cta" onClick={close}>
+          <a href={`mailto:${email}`} className="btn btn-primary btn-sm nav-cta" onClick={close}>
             {t.cta}
           </a>
         </nav>
