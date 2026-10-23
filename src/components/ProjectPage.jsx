@@ -1,6 +1,7 @@
 import Icon from "./Icon";
 import DeviceFrame from "./DeviceFrame";
 import { Phone } from "./Devices";
+import Architecture from "./Architecture";
 
 const isDev = Boolean(import.meta.env?.DEV);
 
@@ -105,6 +106,27 @@ export default function ProjectPage({ project, nextProject, lang, t, contact }) 
             ))}
           </ul>
         </section>
+
+        {p.decisions?.length > 0 && (
+          <section className="pp-section">
+            <h2 className="pp-h2">{t.decisions}</h2>
+            <ol className="decision-list">
+              {p.decisions.map((d) => (
+                <li key={d.title}>
+                  <h3>{d.title}</h3>
+                  <p>{d.text}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
+        {p.architecture && (
+          <section className="pp-section">
+            <h2 className="pp-h2">{t.architecture}</h2>
+            <Architecture data={p.architecture} />
+          </section>
+        )}
 
         <section className="pp-section">
           <h2 className="pp-h2">{t.tech}</h2>

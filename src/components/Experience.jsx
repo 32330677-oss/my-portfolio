@@ -1,13 +1,20 @@
+import { useState } from "react";
 import SectionHeader from "./SectionHeader";
+import ShowMore from "./ShowMore";
+
+// How many roles are shown before "Show all".
+const VISIBLE = 3;
 
 export default function Experience({ t, lang, items, education }) {
   const e = education;
+  const [open, setOpen] = useState(false);
+  const shown = open ? items : items.slice(0, VISIBLE);
   return (
     <section id="experience" className="section section-alt">
       <div className="container">
         <SectionHeader title={t.title} />
-        <ol className="timeline">
-          {items.map((item, i) => {
+        <ol className="timeline" id="experience-list">
+          {shown.map((item, i) => {
             const x = item.text[lang];
             return (
               <li key={i} className="timeline-item">
@@ -21,6 +28,16 @@ export default function Experience({ t, lang, items, education }) {
             );
           })}
         </ol>
+        {items.length > VISIBLE && (
+          <ShowMore
+            open={open}
+            total={items.length}
+            onToggle={() => setOpen((v) => !v)}
+            showAll={t.showAll}
+            showLess={t.showLess}
+            controls="experience-list"
+          />
+        )}
 
         <h3 className="sub-title education-title">{e.title}</h3>
         <ol className="timeline">

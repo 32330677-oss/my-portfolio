@@ -25,7 +25,10 @@ Everything you see is in **`src/data/portfolioData.js`**:
 - `contact` → WhatsApp number, email, LinkedIn, GitHub, CV link
 - `projects` → every project and its own page (problem, solution, features, pictures, links)
 - `experience` → the timeline
-- `portfolioData.en` / `portfolioData.ar` → all other text (services, why me, FAQ, about…)
+- `portfolioData.en` / `portfolioData.ar` → all other text (hero, skills, education, awards, contact…)
+- `hero.stats` → the four numbers under the hero (value + label, in each language)
+- `awards.items` → the first 5 are shown, the rest behind "Show all"
+  (experience shows the first 3; change `VISIBLE` in `Awards.jsx` / `Experience.jsx`)
 - CV button: put your PDF in `public/` and set `resumeUrl: "/your-file.pdf"`.
 
 ### Add screenshots to a project
@@ -48,6 +51,15 @@ the project page shows a reminder that is only visible during `npm run dev`.
 Copy one of the objects in `projects`, give it a new `slug` (letters, numbers and `-`),
 and fill in the English and Arabic text. Its page appears at `#/project/<slug>`.
 Set `featured: true` to show it big at the top.
+Set `group: "idea"` to list it under "Ideas and research plans" instead of the other projects.
+
+### Key decisions and the diagram on a project page
+
+Inside a project's `text.en` / `text.ar` you can add (both are optional, see Team Flow):
+
+- `decisions` → a list of `{ title, text }`, shown as "Key decisions"
+- `architecture` → `{ columns: [{ title, items: [{ name, note }] }], caption }`,
+  drawn as boxes joined by arrows ("How it fits together")
 
 ## Your domain and link previews
 
@@ -66,3 +78,12 @@ and helps Google. Test the preview at https://www.opengraph.xyz after you publis
 ```bash
 npm run build   # creates the dist/ folder, ready for Netlify, Vercel or GitHub Pages
 ```
+
+## Files at a glance
+
+- `src/data/portfolioData.js` → all the content
+- `src/components/appMockData.js` → names and numbers in the drawn demo screens
+- `src/components/` → one file per part of the page (`Hero`, `Stats`, `Projects`, `ProjectPage`, `Architecture`…)
+- `src/index.css` → all the styles (colours for light and dark mode are at the top)
+- Fonts (IBM Plex Sans and IBM Plex Sans Arabic) come from `@fontsource` and are bundled with the site,
+  so there is no request to Google Fonts. After pulling these changes run `npm install` once.

@@ -4,7 +4,8 @@ import SectionHeader from "./SectionHeader";
 
 export default function Projects({ t, lang, projects }) {
   const featured = projects.filter((p) => p.featured);
-  const others = projects.filter((p) => !p.featured);
+  const others = projects.filter((p) => !p.featured && p.group !== "idea");
+  const ideas = projects.filter((p) => !p.featured && p.group === "idea");
 
   return (
     <section id="projects" className="section section-alt">
@@ -28,6 +29,16 @@ export default function Projects({ t, lang, projects }) {
           </div>
         )}
 
+        {ideas.length > 0 && (
+          <div className="more-projects ideas">
+            <h3 className="sub-title">{t.ideas}</h3>
+            <ul className="project-rows">
+              {ideas.map((project) => (
+                <ProjectCard key={project.slug} project={project} lang={lang} label={t.more_details} />
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
   );

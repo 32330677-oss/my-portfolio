@@ -57,6 +57,45 @@ export const projects = [
           "Built-in AI assistant that guides each user step by step",
           "Separate roles for admin, site supervisors and staff supervisors, with an audit log",
         ],
+        // Rules the system is built around (shown as "Key decisions").
+        decisions: [
+          { title: "No worked day disappears", text: "Every day moves through Draft, Submitted and then Approved or Rejected, so it is always in a known state. Fingerprint lines that can't be read are listed for review instead of being dropped." },
+          { title: "A paid salary is locked", text: "Once a payroll is saved as paid it can't be edited, so what a worker received always matches the records." },
+          { title: "Preview before saving", text: "Payroll is calculated as a preview first. Nothing is saved until someone has checked it." },
+          { title: "Ask, don't guess", text: "When information is unclear, the system sends it to a person instead of filling in a value on its own." },
+        ],
+        // Simplified diagram (shown as "How it fits together").
+        architecture: {
+          columns: [
+            {
+              title: "People and devices",
+              items: [
+                { name: "Site supervisors", note: "Flutter app on Android and iPhone" },
+                { name: "Admin and accountants", note: "Flutter app on web and Windows" },
+                { name: "Fingerprint devices", note: "Files sent through the Biometric Connector" },
+              ],
+            },
+            {
+              title: "Server",
+              items: [
+                { name: "REST API", note: "Node.js and Express" },
+                { name: "Roles and permissions", note: "Admin, site and staff supervisors" },
+                { name: "Attendance workflow", note: "Draft, Submitted, Approved, Rejected" },
+                { name: "Payroll engine", note: "Daily, hourly and monthly staff" },
+                { name: "Audit log", note: "Who changed what, and when" },
+              ],
+            },
+            {
+              title: "Data and outputs",
+              items: [
+                { name: "MySQL database", note: "Workers, attendance and payroll" },
+                { name: "AI API", note: "The in-app assistant" },
+                { name: "Excel and Word", note: "Payroll and the daily manpower report" },
+              ],
+            },
+          ],
+          caption: "Simplified view. Equipment Flow connects to it for the combined daily project report.",
+        },
       },
       ar: {
         category: "مشروع مطار دمشق الدولي",
@@ -77,6 +116,43 @@ export const projects = [
           "مساعد ذكاء اصطناعي داخل التطبيق يرشد كل مستخدم خطوة بخطوة",
           "أدوار منفصلة للمدير ومشرفي المواقع ومشرفي الموظفين، مع سجل تدقيق",
         ],
+        decisions: [
+          { title: "لا يضيع أي يوم عمل", text: "يمرّ كل يوم بمراحل: مسودة، ثم مُرسل، ثم معتمد أو مرفوض، فتكون حالته معروفة دائمًا. وسطور البصمة التي لا يمكن قراءتها تُعرض للمراجعة بدل أن تُحذف." },
+          { title: "الراتب المدفوع مقفل", text: "بعد حفظ الرواتب على أنها مدفوعة لا يمكن تعديلها، فيبقى ما تقاضاه العامل مطابقًا للسجلات دائمًا." },
+          { title: "معاينة قبل الحفظ", text: "تُحسب الرواتب أولًا كمعاينة، ولا يُحفظ شيء قبل أن يراجعها شخص." },
+          { title: "يسأل ولا يخمّن", text: "عندما تكون المعلومة غير واضحة، يحيلها النظام إلى شخص بدل أن يضع قيمة من عنده." },
+        ],
+        architecture: {
+          columns: [
+            {
+              title: "المستخدمون والأجهزة",
+              items: [
+                { name: "مشرفو المواقع", note: "تطبيق Flutter على أندرويد وآيفون" },
+                { name: "المدير والمحاسبون", note: "تطبيق Flutter على الويب وويندوز" },
+                { name: "أجهزة البصمة", note: "ملفات تُرسل عبر موصّل البصمة" },
+              ],
+            },
+            {
+              title: "الخادم",
+              items: [
+                { name: "واجهة REST", note: "Node.js و Express" },
+                { name: "الأدوار والصلاحيات", note: "المدير ومشرفو المواقع والموظفين" },
+                { name: "مراحل الحضور", note: "مسودة، مُرسل، معتمد، مرفوض" },
+                { name: "محرّك الرواتب", note: "يومية وساعة وشهري" },
+                { name: "سجل التدقيق", note: "من غيّر ماذا ومتى" },
+              ],
+            },
+            {
+              title: "البيانات والمخرجات",
+              items: [
+                { name: "قاعدة بيانات MySQL", note: "العمال والحضور والرواتب" },
+                { name: "واجهة الذكاء الاصطناعي", note: "المساعد داخل التطبيق" },
+                { name: "Excel و Word", note: "الرواتب وتقرير القوى العاملة اليومي" },
+              ],
+            },
+          ],
+          caption: "عرض مبسّط. ويتصل به نظام Equipment Flow لإصدار التقرير اليومي الموحّد للمشروع.",
+        },
       },
     },
   },
@@ -257,6 +333,7 @@ export const projects = [
   },
   {
     slug: "reconstruction-priorities",
+    group: "idea", // listed under "Ideas and research plans"
     year: "",
     tags: ["Public data", "Decision support", "Research"],
     images: [],
@@ -300,6 +377,7 @@ export const projects = [
   },
   {
     slug: "financial-literacy-app",
+    group: "idea", // listed under "Ideas and research plans"
     year: "2025",
     tags: ["Mobile app", "UX", "Product design"],
     images: [],
@@ -448,6 +526,7 @@ export const portfolioData = {
       details: "Read the case study",
       more: "More projects and research",
       more_details: "Details",
+      ideas: "Ideas and research plans",
     },
     projectPage: {
       back: "Back to all projects",
@@ -465,6 +544,8 @@ export const portfolioData = {
       ctaTitle: "Questions about this project?",
       ctaText: "I'm happy to walk you through how it works and the decisions behind it.",
       ctaButton: "Email me",
+      decisions: "Key decisions",
+      architecture: "How it fits together",
       devHint: "Add screenshots: put image files in public/projects/{slug}/ and list them in `images` in src/data/portfolioData.js. (This note is only visible while developing.)",
     },
     skills: {
@@ -490,6 +571,8 @@ export const portfolioData = {
     },
     experienceSection: {
       title: "Experience",
+      showAll: "Show all experience ({n})",
+      showLess: "Show less",
     },
     education: {
       title: "Education",
@@ -508,6 +591,8 @@ export const portfolioData = {
     },
     awards: {
       title: "Awards and programmes",
+      showAll: "Show all awards ({n})",
+      showLess: "Show less",
       items: [
         { title: "Youth Leadership Programme, Arab Forum for Sustainable Development", org: "UN-ESCWA", date: "2026" },
         { title: "\"From Waste to Worth\" challenge, team advanced", org: "UN Global Compact and Hôtel-Dieu de France", date: "" },
@@ -578,6 +663,7 @@ export const portfolioData = {
       details: "تفاصيل المشروع",
       more: "مشاريع وأبحاث أخرى",
       more_details: "التفاصيل",
+      ideas: "أفكار وخطط بحثية",
     },
     projectPage: {
       back: "العودة إلى كل المشاريع",
@@ -595,6 +681,8 @@ export const portfolioData = {
       ctaTitle: "لديك أسئلة عن هذا المشروع؟",
       ctaText: "يسعدني أن أشرح لك طريقة عمله والقرارات التي بُني عليها.",
       ctaButton: "راسلني بالبريد",
+      decisions: "قرارات أساسية",
+      architecture: "كيف تترابط الأجزاء",
       devHint: "لإضافة صور: ضع ملفات الصور في public/projects/{slug}/ وأضفها إلى images في ملف src/data/portfolioData.js. (تظهر هذه الملاحظة أثناء التطوير فقط.)",
     },
     skills: {
@@ -620,6 +708,8 @@ export const portfolioData = {
     },
     experienceSection: {
       title: "الخبرات",
+      showAll: "عرض كل الخبرات ({n})",
+      showLess: "عرض أقل",
     },
     education: {
       title: "التعليم",
@@ -638,6 +728,8 @@ export const portfolioData = {
     },
     awards: {
       title: "الجوائز والبرامج",
+      showAll: "عرض كل الجوائز ({n})",
+      showLess: "عرض أقل",
       items: [
         { title: "برنامج القيادات الشبابية، المنتدى العربي للتنمية المستدامة", org: "الإسكوا", date: "2026" },
         { title: "تحدّي From Waste to Worth، تأهّل الفريق", org: "الاتفاق العالمي للأمم المتحدة ومستشفى أوتيل ديو دو فرانس", date: "" },
