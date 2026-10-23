@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Attendance, Payroll, initialStatuses, mockText } from "./AppMock";
+import { Attendance, Payroll } from "./AppMock";
+import { initialStatuses, mockText } from "./appMockData";
 
 // The hero's working demo: approve attendance on the phone, payroll on the
 // laptop recalculates. Real screenshots (heroShots) replace it when set.

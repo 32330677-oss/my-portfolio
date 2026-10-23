@@ -23,7 +23,7 @@ export default function Navbar({ t, name, onToggleLang, theme, onToggleTheme, ac
           <Logo size={34} /> {name}
         </a>
 
-        <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label="Main">
+        <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label={t.mainNav}>
           {links.map((l) => (
             <a
               key={l.href}
@@ -50,7 +50,7 @@ export default function Navbar({ t, name, onToggleLang, theme, onToggleTheme, ac
           <button
             type="button"
             className="icon-btn menu-btn"
-            aria-label="Menu"
+            aria-label={t.menu}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >

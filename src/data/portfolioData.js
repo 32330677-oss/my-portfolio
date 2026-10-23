@@ -421,6 +421,8 @@ export const portfolioData = {
       langSwitch: "عربي",
       themeLight: "Switch to light mode",
       themeDark: "Switch to dark mode",
+      menu: "Menu",
+      mainNav: "Main",
     },
     hero: {
       name: "Hamza Hashma",
@@ -434,6 +436,13 @@ export const portfolioData = {
       demoHint: "Try it: tap a worker to approve their day and watch the payroll update.",
       demoReset: "Reset demo",
     },
+    // The numbers strip under the hero.
+    stats: [
+      { value: "125", label: "workers paid through the payroll system I built" },
+      { value: "2", label: "systems in daily use on the airport project" },
+      { value: "60+", label: "hours of coding and robotics workshops taught" },
+      { value: "3.99", label: "GPA, B.Sc. in Computer Science" },
+    ],
     projectsSection: {
       title: "Selected work",
       details: "Read the case study",
@@ -528,6 +537,7 @@ export const portfolioData = {
     },
     seoDescription: "Hamza Hashma, software developer in Damascus. Computer Science graduate (GPA 3.99), builder of Team Flow for the Damascus International Airport project, and co-founder of Infinity Team.",
     footer: "Designed and built by Hamza Hashma",
+    skipLink: "Skip to content",
   },
 
   ar: {
@@ -542,6 +552,8 @@ export const portfolioData = {
       langSwitch: "EN",
       themeLight: "الوضع الفاتح",
       themeDark: "الوضع الداكن",
+      menu: "القائمة",
+      mainNav: "القائمة الرئيسية",
     },
     hero: {
       name: "حمزة هشمة",
@@ -555,6 +567,12 @@ export const portfolioData = {
       demoHint: "جرّبها: اضغط على أحد العمال لاعتماد يومه، وشاهد الرواتب تتحدّث.",
       demoReset: "إعادة العرض",
     },
+    stats: [
+      { value: "125", label: "عاملًا يتقاضون أجورهم عبر نظام الرواتب الذي بنيته" },
+      { value: "2", label: "نظامان يُستخدمان يوميًا في مشروع المطار" },
+      { value: "+60", label: "ساعة من ورش البرمجة والروبوتات قدّمتها" },
+      { value: "3.99", label: "المعدل، بكالوريوس علوم الحاسوب" },
+    ],
     projectsSection: {
       title: "أعمال مختارة",
       details: "تفاصيل المشروع",
@@ -649,5 +667,6 @@ export const portfolioData = {
     },
     seoDescription: "حمزة هشمة، مطوّر برمجيات في دمشق. خريج علوم الحاسوب بمعدل 3.99، ومطوّر نظام Team Flow لمشروع مطار دمشق الدولي، ومؤسس مشارك في Infinity Team.",
     footer: "تصميم وبرمجة حمزة هشمة",
+    skipLink: "انتقل إلى المحتوى",
   },
 };

@@ -399,7 +399,7 @@ html[dir="rtl"] .hero h1 {
 .stage-phone {
   position: absolute;
   width: 32%;
-  bottom: -17%;
+  bottom: -24%; /* low enough to keep the payroll total row visible */
   inset-inline-end: 5%;
   animation: rise 0.9s 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
@@ -1562,6 +1562,10 @@ html[dir="rtl"] .pp-header h1 {
 }
 
 .next-project strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.6rem;
   font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   transition: color var(--ease);
 }
@@ -2231,7 +2235,7 @@ html[dir="rtl"] .quote blockquote p::after {
 
   .stage-phone {
     width: 42%;
-    bottom: -22%;
+    bottom: -30%;
   }
 }
 
@@ -2251,5 +2255,97 @@ html[dir="rtl"] .quote blockquote p::after {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+/* =====================================================================
+   Added: skip-link target, numbers strip, tech tags
+   ===================================================================== */
+main:focus {
+  outline: none;
+}
+
+.stats {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.35rem;
+  padding: 1.75rem 1.5rem;
+  border-inline-start: 1px solid var(--line);
+}
+
+.stat:first-child {
+  border-inline-start: 0;
+  padding-inline-start: 0;
+}
+
+.stat-value {
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-align: start;
+}
+
+html[dir="rtl"] .stat-value {
+  text-align: right;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  max-width: 22ch;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+html[dir="rtl"] .tag-list {
+  justify-content: flex-end;
+}
+
+.tag {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat {
+    padding: 1.25rem 1rem;
+  }
+
+  .stat:nth-child(odd) {
+    border-inline-start: 0;
+    padding-inline-start: 0;
+  }
+
+  .stat:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
   }
 }

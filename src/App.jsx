@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Stats from "./components/Stats";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import ProjectPage from "./components/ProjectPage";
@@ -55,6 +56,8 @@ export default function App() {
   const [activeId, setActiveId] = useState("");
   const hashRef = useRef(hash);
   const t = portfolioData[lang];
+  // No section is highlighted on project pages.
+  const navActiveId = hash.startsWith("#/") ? "" : activeId;
 
   const slug = projectSlugFrom(hash);
   const projectIndex = slug ? projects.findIndex((p) => p.slug === slug) : -1;
@@ -104,10 +107,7 @@ export default function App() {
 
   // Highlight the menu link of the section on screen (home page only).
   useEffect(() => {
-    if (hash.startsWith("#/") || !("IntersectionObserver" in window)) {
-      setActiveId("");
-      return undefined;
-    }
+    if (hash.startsWith("#/") || !("IntersectionObserver" in window)) return undefined;
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -135,18 +135,28 @@ export default function App() {
 
   return (
     <div className="app">
-      <a href="#main" className="skip-link">Skip to content</a>
+      {/* Moves focus without changing the URL hash (a hash change would leave a project page). */}
+      <a
+        href="#main"
+        className="skip-link"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById("main")?.focus();
+        }}
+      >
+        {t.skipLink}
+      </a>
       <Navbar
         t={t.nav}
         name={t.hero.name}
         onToggleLang={() => setLang((l) => (l === "en" ? "ar" : "en"))}
         theme={theme}
-        activeId={activeId}
+        activeId={navActiveId}
         email={contact.email}
         onToggleTheme={() => setTheme((m) => (m === "dark" ? "light" : "dark"))}
       />
 
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         {notFound ? (
           <NotFound t={t.notFound} />
         ) : project ? (
@@ -161,6 +171,7 @@ export default function App() {
         ) : (
           <>
             <Hero t={t.hero} contact={contact} lang={lang} heroShots={heroShots} />
+            <Stats items={t.stats} />
             <Projects t={t.projectsSection} lang={lang} projects={projects} />
             <Skills t={t.skills} />
             <Experience t={t.experienceSection} lang={lang} items={experience} education={t.education} />

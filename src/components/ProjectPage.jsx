@@ -108,7 +108,11 @@ export default function ProjectPage({ project, nextProject, lang, t, contact }) 
 
         <section className="pp-section">
           <h2 className="pp-h2">{t.tech}</h2>
-          <p className="stack-list" dir="ltr">{project.tags.join(", ")}</p>
+          <ul className="tag-list" dir="ltr">
+            {project.tags.map((tag) => (
+              <li key={tag} className="tag">{tag}</li>
+            ))}
+          </ul>
         </section>
 
         <section className="pp-cta">
@@ -123,7 +127,10 @@ export default function ProjectPage({ project, nextProject, lang, t, contact }) 
 
         <a href={`#/project/${nextProject.slug}`} className="next-project">
           <span>{t.next}</span>
-          <strong>{next.title}</strong>
+          <strong>
+            {next.title}
+            <Icon name="arrow" size={28} className="flip-rtl" />
+          </strong>
         </a>
       </div>
     </article>
