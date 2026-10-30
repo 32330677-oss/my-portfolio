@@ -5,6 +5,14 @@ export default function Hero({ t, contact, lang, heroShots }) {
     <section id="top" className="hero">
       <div className="container hero-inner">
         <div className="hero-text">
+          {/* Print-only: name and contact details at the top of the PDF. */}
+          <div className="print-only print-header">
+            <p className="print-name">{t.name}</p>
+            <p dir="ltr">
+              {t.title} | {contact.email} | {contact.whatsappDisplay}
+              {contact.linkedin && ` | ${contact.linkedin.replace(/^https?:\/\/(www\.)?/, "")}`}
+            </p>
+          </div>
           <p className="hero-badge">
             <span className="badge-dot" aria-hidden="true" />
             {t.badge}
@@ -25,6 +33,17 @@ export default function Hero({ t, contact, lang, heroShots }) {
               </a>
             )}
           </div>
+
+          {t.openTo?.items?.length > 0 && (
+            <div className="hero-open">
+              <span className="hero-open-label">{t.openTo.label}</span>
+              <ul>
+                {t.openTo.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Animates once on load; after that it only moves when you use it. */}

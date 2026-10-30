@@ -1,9 +1,8 @@
 import Icon from "./Icon";
 import DeviceFrame from "./DeviceFrame";
-import { Phone } from "./Devices";
+import MockScene from "./MockScene";
 import Architecture from "./Architecture";
 
-const isDev = Boolean(import.meta.env?.DEV);
 
 export default function ProjectPage({ project, nextProject, lang, t, contact }) {
   const p = project.text[lang];
@@ -40,7 +39,7 @@ export default function ProjectPage({ project, nextProject, lang, t, contact }) 
 
           {!hasImages && project.mock && (
             <div className="pp-visual" aria-hidden="true" style={{ viewTransitionName: `visual-${project.slug}` }}>
-              <Phone mock={project.mock} lang={lang} />
+              <MockScene mock={project.mock} lang={lang} />
             </div>
           )}
         </header>
@@ -76,13 +75,7 @@ export default function ProjectPage({ project, nextProject, lang, t, contact }) 
               ))}
             </div>
           </section>
-        ) : (
-          isDev && (
-            <p className="dev-hint">
-              <Icon name="image" size={20} /> {t.devHint.replace("{slug}", project.slug)}
-            </p>
-          )
-        )}
+        ) : null}
 
         <section className="pp-section pp-story">
           <div>
