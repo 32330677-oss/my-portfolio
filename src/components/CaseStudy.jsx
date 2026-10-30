@@ -1,4 +1,4 @@
-import { Phone } from "./Devices";
+import MockScene from "./MockScene";
 import DeviceFrame from "./DeviceFrame";
 
 // A featured project on the home page: big visual + the story in short.
@@ -12,7 +12,7 @@ export default function CaseStudy({ project, lang, label, flip }) {
         {cover ? (
           <DeviceFrame src={cover.src} alt={cover.caption?.[lang] || p.title} frame={cover.frame} />
         ) : (
-          <Phone mock={project.mock} lang={lang} />
+          <MockScene mock={project.mock} lang={lang} />
         )}
       </div>
 

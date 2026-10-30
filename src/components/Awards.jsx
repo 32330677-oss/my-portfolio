@@ -1,13 +1,15 @@
 import { useState } from "react";
 import SectionHeader from "./SectionHeader";
 import ShowMore from "./ShowMore";
+import usePrinting from "./usePrinting";
 
 // How many awards are shown before "Show all".
 const VISIBLE = 5;
 
 export default function Awards({ t }) {
   const [open, setOpen] = useState(false);
-  const shown = open ? t.items : t.items.slice(0, VISIBLE);
+  const printing = usePrinting();
+  const shown = open || printing ? t.items : t.items.slice(0, VISIBLE);
   return (
     <section id="awards" className="section">
       <div className="container">

@@ -119,6 +119,14 @@ const paths = {
       <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
     </>
   ),
+  printer: (
+    <>
+      <path d="M7 8V3.5h10V8" />
+      <rect x="3" y="8" width="18" height="9" rx="1.5" />
+      <path d="M7 14h10v6.5H7z" />
+    </>
+  ),
+  up: <path d="M12 19V5M6 11l6-6 6 6" />,
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,
   close: <path d="M6 6l12 12M18 6L6 18" />,
 };

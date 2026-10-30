@@ -11,6 +11,7 @@ import Skills from "./components/Skills";
 import Quote from "./components/Quote";
 import Awards from "./components/Awards";
 import Contact from "./components/Contact";
+import Icon from "./components/Icon";
 import { portfolioData, contact, projects, experience, heroShots } from "./data/portfolioData";
 
 // ---- small helpers -------------------------------------------------------
@@ -177,15 +178,43 @@ export default function App() {
             <Experience t={t.experienceSection} lang={lang} items={experience} education={t.education} />
             <Quote t={t.quote} />
             <Awards t={t.awards} />
-            <Contact t={t.contactSection} contact={contact} />
+            <Contact t={t.contactSection} contact={contact} resumeLabel={t.hero.resume} />
           </>
         )}
       </main>
 
       <footer className="footer">
         <div className="container footer-inner">
-          <span>© {new Date().getFullYear()} {t.hero.name}</span>
-          <span>{t.footer}</span>
+          <div className="footer-id">
+            <strong>{t.hero.name}</strong>
+            <span>{t.hero.title}</span>
+          </div>
+          <nav className="footer-links" aria-label={t.nav.contact}>
+            <a href={`mailto:${contact.email}`}>{t.contactSection.email}</a>
+            {contact.linkedin && (
+              <a href={contact.linkedin} target="_blank" rel="noreferrer">
+                {t.contactSection.linkedin}
+              </a>
+            )}
+            <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer">
+              {t.contactSection.whatsapp}
+            </a>
+          </nav>
+          <a
+            href="#top"
+            className="footer-top"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+              document.getElementById("main")?.focus({ preventScroll: true });
+            }}
+          >
+            <Icon name="up" size={18} />
+            {t.backToTop}
+          </a>
+          <p className="footer-meta">
+            © {new Date().getFullYear()} {t.hero.name}. {t.footer}
+          </p>
         </div>
       </footer>
 

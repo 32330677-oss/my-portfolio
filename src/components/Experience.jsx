@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SectionHeader from "./SectionHeader";
 import ShowMore from "./ShowMore";
+import usePrinting from "./usePrinting";
 
 // How many roles are shown before "Show all".
 const VISIBLE = 3;
@@ -8,7 +9,8 @@ const VISIBLE = 3;
 export default function Experience({ t, lang, items, education }) {
   const e = education;
   const [open, setOpen] = useState(false);
-  const shown = open ? items : items.slice(0, VISIBLE);
+  const printing = usePrinting();
+  const shown = open || printing ? items : items.slice(0, VISIBLE);
   return (
     <section id="experience" className="section section-alt">
       <div className="container">
